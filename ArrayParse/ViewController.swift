@@ -20,6 +20,15 @@ class ViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         self.answerView.textColor = UIColor.brownColor()
         self.toolbar.tintColor = UIColor.brownColor()
+        
+        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleViewTap))
+        
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func handleViewTap() {
+        self.dataInputField.resignFirstResponder()
+        self.sumEntryField.resignFirstResponder()
     }
     
     // -----------------------------------------------------------------------------------------------------
