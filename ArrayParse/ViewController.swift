@@ -64,7 +64,7 @@ class ViewController: UIViewController {
             }
         }
         
-        if msg.isEmpty {
+        if msg.isEmpty && tupleArray.isEmpty {
             self.answerView.text = "Sorry, there's no two numbers found."
         } else {
             for myTuple in tupleArray {
