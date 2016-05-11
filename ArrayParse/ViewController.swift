@@ -119,15 +119,10 @@ extension ViewController:UITextFieldDelegate {
                 if x.isEmpty {
                     return false
                 }
-                if nil == orderedIntSet.firstObject {
-                    // 1) Convert to array of Int, 2) Sort, 3) Make Unique via Set, 4) change to Array.
-                    disseminate(dataInputField.text!)
-                }
+                // 1) Convert to array of Int, 2) Sort, 3) Make Unique via Set, 4) change to Array.
+                disseminate(dataInputField.text!)
                 processArray(Int(x)!)
-                return true
             }
-        } else {
-            disseminate(textField.text!)
         }
         return true
     }
