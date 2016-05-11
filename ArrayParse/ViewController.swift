@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var sumEntryField: UITextField!
     @IBOutlet weak var toolbar: UIToolbar!
     
-    var intArray = [Int]()
+    var orderedIntSet = NSOrderedSet()
     let acceptableCharacters: Set<String> = ["1","2","3","4","5","6","7","8","9","0",","]
     
     override func viewDidLayoutSubviews() {
@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         self.view.addGestureRecognizer(tapRecognizer)
     }
     
+    // -----------------------------------------------------------------------------------------------------
+    
     func handleViewTap() {
         self.dataInputField.resignFirstResponder()
         self.sumEntryField.resignFirstResponder()
@@ -33,9 +35,12 @@ class ViewController: UIViewController {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func disseminate(string:String) -> [Int] {
-        return string.characters.split(",").flatMap{ Int(String($0)) }
+    func disseminate(string:String)  {
+        let intArray = string.characters.split(",").flatMap{ Int(String($0)) }
+        orderedIntSet = NSOrderedSet.init(array: intArray)
     }
+    
+    // -----------------------------------------------------------------------------------------------------
     
     func resetDataInputWithCleansedData(set:NSOrderedSet) {
         var myString:String = ""
@@ -48,20 +53,20 @@ class ViewController: UIViewController {
     }
     
     // -----------------------------------------------------------------------------------------------------
+    
     func processArray(sum:Int) {
-        let orderedSet = NSOrderedSet(array:intArray)
-        resetDataInputWithCleansedData(orderedSet)
+        resetDataInputWithCleansedData(orderedIntSet)
         var chosenSet = Set<Int>()
         var msg = ""
-        if orderedSet.containsObject(sum) {
+        if orderedIntSet.containsObject(sum) {
             msg = "Entered Sum '\(sum)' was found within the data source.\n"
         }
         var tupleArray = [(Int,Int)]()
         
-        for x in orderedSet {
+        for x in orderedIntSet {
             let xInt = Int(x as! NSNumber)
             let y = sum - xInt
-            if orderedSet.containsObject(y) {
+            if orderedIntSet.containsObject(y) {
                 if !chosenSet.contains(y) && !chosenSet.contains(xInt) {
                     if y != xInt {   // ... ignore numerals when doubled, equals sum.
                         tupleArray.append((xInt,y))
@@ -109,21 +114,20 @@ extension ViewController:UITextFieldDelegate {
         textField.resignFirstResponder()
         
         if isSum {
-            
-            intArray = []
+            orderedIntSet = []
             if let x = textField.text {
                 if x.isEmpty {
                     return false
                 }
-                if intArray.isEmpty {
+                if nil == orderedIntSet.firstObject {
                     // 1) Convert to array of Int, 2) Sort, 3) Make Unique via Set, 4) change to Array.
-                    intArray = Array(Set(disseminate(dataInputField.text!)))
+                    disseminate(dataInputField.text!)
                 }
                 processArray(Int(x)!)
                 return true
             }
         } else {
-            intArray = disseminate(textField.text!).sort()
+            disseminate(textField.text!)
         }
         return true
     }
