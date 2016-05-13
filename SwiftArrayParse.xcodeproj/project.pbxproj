@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18C695171CE69AD700CCD846 /* Algorithms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C695161CE69AD700CCD846 /* Algorithms.swift */; };
 		18EB26BD1CDD87200033274B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB26BC1CDD87200033274B /* AppDelegate.swift */; };
 		18EB26BF1CDD87200033274B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EB26BE1CDD87200033274B /* ViewController.swift */; };
 		18EB26C21CDD87200033274B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18EB26C01CDD87200033274B /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		1875B4AB1CE11CC5003710B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18C695161CE69AD700CCD846 /* Algorithms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Algorithms.swift; sourceTree = "<group>"; };
 		18EB26B91CDD87200033274B /* SwiftArrayParse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftArrayParse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18EB26BC1CDD87200033274B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18EB26BE1CDD87200033274B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				18EB26C31CDD87200033274B /* Assets.xcassets */,
 				18EB26C51CDD87200033274B /* LaunchScreen.storyboard */,
 				18EB26C81CDD87200033274B /* Info.plist */,
+				18C695161CE69AD700CCD846 /* Algorithms.swift */,
 			);
 			path = ArrayParse;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				18EB26BF1CDD87200033274B /* ViewController.swift in Sources */,
 				18EB26BD1CDD87200033274B /* AppDelegate.swift in Sources */,
+				18C695171CE69AD700CCD846 /* Algorithms.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
