@@ -16,17 +16,20 @@ class ViewController: UIViewController {
     
     var orderedIntSet = NSOrderedSet()
     let acceptableCharacters: Set<String> = ["1","2","3","4","5","6","7","8","9","0",","]
+    let emptyDataString = "-- Missing Input ---"
     
     override func viewDidLayoutSubviews() {
         self.answerView.textColor = UIColor.brownColor()
         self.toolbar.tintColor = UIColor.brownColor()
         
-        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleViewTap))
-        
+        var tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleViewTap))
         self.view.addGestureRecognizer(tapRecognizer)
+        tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleDataFieldTap))
+        self.dataInputField.addGestureRecognizer(tapRecognizer)
     }
     
     // -----------------------------------------------------------------------------------------------------
+    // MARK: - Gesture Handlers
     
     func handleViewTap() {
         self.dataInputField.resignFirstResponder()
@@ -35,14 +38,30 @@ class ViewController: UIViewController {
     
     // -----------------------------------------------------------------------------------------------------
     
-    func disseminate(string:String)  {
+    func handleDataFieldTap() {
+        if self.dataInputField.text == emptyDataString {
+            self.dataInputField.text = ""
+            self.sumEntryField.text = ""
+            self.dataInputField.textColor = UIColor.blackColor()
+            self.dataInputField.becomeFirstResponder()
+        }
+    }
+    
+    // -----------------------------------------------------------------------------------------------------
+    // MARK: -
+    
+    func disseminate(string:String) -> Bool {
         let intArray = string.characters.split(",").flatMap{ Int(String($0)) }
         orderedIntSet = NSOrderedSet.init(array: intArray)
+        return orderedIntSet.count > 0
     }
     
     // -----------------------------------------------------------------------------------------------------
     
     func resetDataInputWithCleansedData(set:NSOrderedSet) {
+        guard set.count > 0 else {
+            return;
+        }
         var myString:String = ""
         for member in set {
             myString += (String(member.intValue))
@@ -120,8 +139,12 @@ extension ViewController:UITextFieldDelegate {
                     return false
                 }
                 // 1) Convert to array of Int, 2) Sort, 3) Make Unique via Set, 4) change to Array.
-                disseminate(dataInputField.text!)
-                processArray(Int(x)!)
+                if disseminate(dataInputField.text!) {
+                    processArray(Int(x)!)
+                } else {
+                    self.dataInputField.textColor = UIColor.redColor()
+                    self.dataInputField.text = emptyDataString
+                }
             }
         }
         return true
