@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -215,22 +216,22 @@
                                 <exclude reference="0Ti-xD-eks"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="7Ar-X5-fpF"/>
-                                <exclude reference="9lp-LS-FKq"/>
-                                <exclude reference="hO8-4C-bLO"/>
+                                <exclude reference="ZRz-xE-ntv"/>
+                                <exclude reference="hI6-WN-Cti"/>
+                                <exclude reference="Qtf-ak-yZ0"/>
+                                <exclude reference="Xyl-yV-PEE"/>
                                 <exclude reference="WZX-e9-P1Z"/>
                                 <exclude reference="yfv-5E-IN6"/>
                                 <exclude reference="KJ7-Vc-cGH"/>
                                 <exclude reference="pxb-Rv-qrF"/>
                                 <exclude reference="puj-Cg-5sL"/>
                                 <exclude reference="zkK-lc-ZJO"/>
+                                <exclude reference="7Ar-X5-fpF"/>
+                                <exclude reference="9lp-LS-FKq"/>
+                                <exclude reference="hO8-4C-bLO"/>
                                 <exclude reference="3Uu-x1-ACB"/>
                                 <exclude reference="7O5-du-V8I"/>
                                 <exclude reference="O4S-IL-ClR"/>
-                                <exclude reference="Qtf-ak-yZ0"/>
-                                <exclude reference="Xyl-yV-PEE"/>
-                                <exclude reference="ZRz-xE-ntv"/>
-                                <exclude reference="hI6-WN-Cti"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -244,22 +245,22 @@
                                 <include reference="0Ti-xD-eks"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="7Ar-X5-fpF"/>
-                                <include reference="9lp-LS-FKq"/>
-                                <include reference="hO8-4C-bLO"/>
+                                <include reference="ZRz-xE-ntv"/>
+                                <include reference="hI6-WN-Cti"/>
+                                <include reference="Qtf-ak-yZ0"/>
+                                <include reference="Xyl-yV-PEE"/>
                                 <include reference="WZX-e9-P1Z"/>
                                 <include reference="yfv-5E-IN6"/>
                                 <include reference="KJ7-Vc-cGH"/>
                                 <include reference="pxb-Rv-qrF"/>
                                 <include reference="puj-Cg-5sL"/>
                                 <include reference="zkK-lc-ZJO"/>
+                                <include reference="7Ar-X5-fpF"/>
+                                <include reference="9lp-LS-FKq"/>
+                                <include reference="hO8-4C-bLO"/>
                                 <include reference="3Uu-x1-ACB"/>
                                 <include reference="7O5-du-V8I"/>
                                 <include reference="O4S-IL-ClR"/>
-                                <include reference="Qtf-ak-yZ0"/>
-                                <include reference="Xyl-yV-PEE"/>
-                                <include reference="ZRz-xE-ntv"/>
-                                <include reference="hI6-WN-Cti"/>
                             </mask>
                         </variation>
                     </view>
