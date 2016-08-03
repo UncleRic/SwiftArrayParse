@@ -22,8 +22,10 @@ extension ViewController {
         }
         var myString:String = ""
         for member in set {
-            myString += (String(member.int32Value))
-            myString += ","
+            if let numb = member.int32Value {
+                myString += (String(numb))
+                myString += ","
+            }
         }
         myString.remove(at: myString.index(before: myString.endIndex)) // remove last ','
         self.dataInputField.text = myString
