@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     let emptyDataString = "-- Missing Input ---"
     
     override func viewDidLayoutSubviews() {
-        self.answerView.textColor = UIColor.brownColor()
-        self.toolbar.tintColor = UIColor.brownColor()
+        self.answerView.textColor = UIColor.brown
+        self.toolbar.tintColor = UIColor.brown
         
         var tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(self.handleViewTap))
         self.view.addGestureRecognizer(tapRecognizer)
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         if self.dataInputField.text == emptyDataString {
             self.dataInputField.text = ""
             self.sumEntryField.text = ""
-            self.dataInputField.textColor = UIColor.blackColor()
+            self.dataInputField.textColor = UIColor.black
             self.dataInputField.becomeFirstResponder()
         }
     }
@@ -50,14 +50,14 @@ class ViewController: UIViewController {
     // -----------------------------------------------------------------------------------------------------
     // MARK: - Action methods
     
-    @IBAction func Reset(sender: UIBarButtonItem) {
+    @IBAction func Reset(_ sender: UIBarButtonItem) {
         self.dataInputField.text = ""
         self.dataInputField.becomeFirstResponder()
         self.sumEntryField.text = ""
         self.answerView.text = ""
     }
     
-    @IBAction func exitAction(sender: UIBarButtonItem) {
+    @IBAction func exitAction(_ sender: UIBarButtonItem) {
         exit(0)
     }
     
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
 // MARK: - UITextFieldDelege Methods
 
 extension ViewController:UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let isSum = (textField.tag == 2)
         textField.resignFirstResponder()
         
@@ -81,9 +81,14 @@ extension ViewController:UITextFieldDelegate {
                 if disseminate(dataInputField.text!) {
                     processArray(Int(x)!)
                 } else {
-                    self.dataInputField.textColor = UIColor.redColor()
+                    self.dataInputField.textColor = UIColor.red
                     self.dataInputField.text = emptyDataString
                 }
+            }
+        } else {
+            if (textField.text!.isEmpty) {
+                textField.text = textField.placeholder
+                self.sumEntryField.becomeFirstResponder()
             }
         }
         return true
@@ -92,7 +97,7 @@ extension ViewController:UITextFieldDelegate {
     // -----------------------------------------------------------------------------------------------------
     // Filtering out input garbage:
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange
+    func textField(_ textField: UITextField, shouldChangeCharactersIn
         range: NSRange, replacementString string: String) -> Bool {
         return acceptableCharacters.contains(string)
     }

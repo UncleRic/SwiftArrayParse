@@ -13,7 +13,7 @@ import Foundation
 // This is to be done in O(n) with space complexity of O(1).
 // Resultant Array: [3,6,1,2,1,0,0] - Don't worry about sorting.
 
-func putZeroesToLeft(inout nums: [Int]) {
+func putZeroesToLeft(_ nums: inout [Int]) {
     assert(!nums.isEmpty)
     
     var firstAvailableSlot = (nums[0] == 0) ? 1:0

@@ -8,34 +8,34 @@
 import Foundation
 
 extension ViewController {
-    func disseminate(string:String) -> Bool {
-        let intArray = string.characters.split(",").flatMap{ Int(String($0)) }
+    func disseminate(_ string:String) -> Bool {
+        let intArray = string.characters.split(separator: ",").flatMap{ Int(String($0)) }
         orderedIntSet = NSOrderedSet.init(array: intArray)
         return orderedIntSet.count > 0
     }
     
     // -----------------------------------------------------------------------------------------------------
     
-    func resetDataInputWithCleansedData(set:NSOrderedSet) {
+    func resetDataInputWithCleansedData(_ set:NSOrderedSet) {
         guard set.count > 0 else {
             return;
         }
         var myString:String = ""
         for member in set {
-            myString += (String(member.intValue))
+            myString += (String(member.int32Value))
             myString += ","
         }
-        myString.removeAtIndex(myString.endIndex.predecessor()) // remove last ','
+        myString.remove(at: myString.index(before: myString.endIndex)) // remove last ','
         self.dataInputField.text = myString
     }
     
     // -----------------------------------------------------------------------------------------------------
     
-    func processArray(sum:Int) {
+    func processArray(_ sum:Int) {
         resetDataInputWithCleansedData(orderedIntSet)
         var chosenSet = Set<Int>()
         var msg = ""
-        if orderedIntSet.containsObject(sum) {
+        if orderedIntSet.contains(sum) {
             msg = "Entered Sum '\(sum)' was found within the data source.\n"
         }
         var tupleArray = [(Int,Int)]()
@@ -43,7 +43,7 @@ extension ViewController {
         for x in orderedIntSet {
             let xInt = Int(x as! NSNumber)
             let y = sum - xInt
-            if orderedIntSet.containsObject(y) {
+            if orderedIntSet.contains(y) {
                 if !chosenSet.contains(y) && !chosenSet.contains(xInt) {
                     if y != xInt {   // ... ignore numerals when doubled, equals sum.
                         tupleArray.append((xInt,y))
